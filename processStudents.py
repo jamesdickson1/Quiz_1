@@ -22,31 +22,37 @@ through the logic of the problem.
 
 import csv
 
-
 # create a file object to open the file in read mode
 
-
+infile = open("students.csv",'r')
 
 # create a csv object from the file object
 
+outfile = open("processedStudents.csv",'a')
 
 #skip the header row
 
+next(infile)
 
 #create an outfile object for the pocessed record
 
-
+stufile = csv.reader(infile, delimiter=",")
 
 #create a new dictionary named 'student_dict'
 
-
+student_dict = {}
 
 #use a loop to iterate through each row of the file
 
+for i in stufile:
     #check if the GPA is below 3.0. If so, write the record to the outfile
-    
+    if float(i[8]) < 3.0:
+        outfile.write(i[0] + "," + i[2] + "," + i[3] + "," + i[6] + ',' + i[7] + "," + i[8] + "\n")
         
+        student_dict.update({i[0]:i[8]})
 
+        
+    
 
 
     # append the record to the dictionary with the student id as the Key
@@ -58,17 +64,18 @@ import csv
 
 
 #print the entire dictionary
-
+print(student_dict)
 
 #Print the student id 
 
+print(student_dict["124567890"])
 
 #print out the corresponding GPA from the dictionary
 
 
-
 #close the outfile
 
+outfile.close()
 
 
 
