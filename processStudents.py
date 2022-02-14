@@ -71,7 +71,7 @@ print(student_dict)
 print(student_dict["124567890"])
 
 #print out the corresponding GPA from the dictionary
-
+\
 
 #close the outfile
 
